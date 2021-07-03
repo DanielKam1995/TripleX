@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <list>
+#include <ctime>
 
 using namespace std;
 
@@ -33,10 +34,6 @@ bool LoadIntroductionText(int _levelDifficulty)
 			getline(myfile, line);
 
 			TextFileList.push_back(line);
-
-			//string formatline = Replace("{0}", to_string(_levelDifficulty));
-
-			//cout << line << endl;
 		}
 		myfile.close();
 	}
@@ -68,9 +65,9 @@ bool Game(int _levelDifficulty)
 
 	int GuessA, GuessB, GuessC = 0;
 
-	const int CodeA = 4;
-	const int CodeB = 5;
-	const int CodeC = 6;
+	const int CodeA = rand() % _levelDifficulty + 1;
+	const int CodeB = rand() % _levelDifficulty + 1;
+	const int CodeC = rand() % _levelDifficulty + 1;
 
 	const int CodeSum = CodeA + CodeB + CodeC;
 	const int CodeProduct = CodeA * CodeB * CodeC;
@@ -103,9 +100,11 @@ bool Game(int _levelDifficulty)
 
 int main()
 {
+	srand(time(NULL));
 	int LevelDifficulty = 1;
-	
-	while (true)
+	const int MaxLevelDifficulty = 5;
+
+	while (LevelDifficulty <= MaxLevelDifficulty)
 	{
 		bool isLevelCompleted = Game(LevelDifficulty);
 		cin.clear();
@@ -117,5 +116,6 @@ int main()
 		}
 	}
 
+	cout << "\n\n\n *******Good Job Agent! You saved the planet!!*******\n\n ";
 	return 0;
 }
