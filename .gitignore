@@ -1,0 +1,8 @@
+
+TripleXVS/.vs/TripleXVS/v16/.suo
+*.db
+TripleXVS/.vs/TripleXVS/v16/Browse.VC.db
+*.db-shm
+*.db-wal
+*.opendb
+*.obj
